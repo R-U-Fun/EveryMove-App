@@ -2,6 +2,7 @@ package everymoveapp.prototype;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +16,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText signupName, signupEmail, signupPassword, signupDob, signupHeight,signupWeight;
+    EditText signupName, signupEmail, signupUsername ,signupPassword, passwordConfirmation;
     TextView loginRedirectText;
     Button signupButton;
     FirebaseDatabase database;
     DatabaseReference reference;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +31,10 @@ public class SignupActivity extends AppCompatActivity {
 
         signupName = findViewById(R.id.signup_name);
         signupEmail = findViewById(R.id.signup_email);
+        signupUsername = findViewById(R.id.signup_username);
         signupPassword = findViewById(R.id.signup_password);
-        signupDob = findViewById(R.id.signup_dob);
-        signupHeight = findViewById(R.id.signup_height);
-        signupWeight = findViewById(R.id.signup_weight);
+        passwordConfirmation = findViewById(R.id.Confirmation_Password);
+
         signupButton = findViewById(R.id.sighnup_button);
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
@@ -46,11 +48,12 @@ public class SignupActivity extends AppCompatActivity {
 
                 String name = signupName.getText().toString();
                 String email = signupEmail.getText().toString();
+                String username = signupUsername.getText().toString();
                 String password = signupPassword.getText().toString();
-                String height = signupHeight.getText().toString();
-                String weight = signupWeight.getText().toString();
+                String ConfirmationPassword = passwordConfirmation.getText().toString();
 
-                HelperClass helperClass = new HelperClass(name, email, password, height, weight);
+
+                HelperClass helperClass = new HelperClass(name, email, username, password);
                 reference.child(name).setValue(helperClass);
 
                 Toast.makeText(SignupActivity.this, "You have sign up successfully ", Toast.LENGTH_SHORT).show();

@@ -50,69 +50,62 @@
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_email"
-                android:background="@drawable/button_boarder"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Email"
-                android:fontFamily="@font/source"
+                android:background="@drawable/button_boarder"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
+                android:fontFamily="@font/source"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:textColor="@color/black" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_password"
+                android:id="@+id/signup_username"
                 android:background="@drawable/button_boarder"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Password"
+                android:hint="Username"
                 android:fontFamily="@font/source"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
             <EditText
+                android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_dob"
-                android:background="@drawable/button_boarder"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="DOB"
+                android:background="@drawable/button_boarder"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="8dp"
                 android:fontFamily="@font/source"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/Confirmation_Password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_boarder"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/signup_height"
-                android:background="@drawable/button_boarder"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Height"
                 android:fontFamily="@font/source"
-                android:drawableLeft="@drawable/baseline_height_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/signup_weight"
-                android:background="@drawable/button_boarder"
-                android:layout_marginTop="20dp"
+                android:hint="Re-Enter password"
+                android:inputType="textPassword"
                 android:padding="8dp"
-                android:hint="Weight"
-                android:fontFamily="@font/source"
-                android:drawableLeft="@drawable/baseline_monitor_weight_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
+
+
+
+
 
             <Button
                 android:layout_width="match_parent"
@@ -135,6 +128,8 @@
                 android:textSize="18dp"
                 android:textColor="#009B85"
                 android:fontFamily="@font/source"/>
+
+
 
 
         </LinearLayout>

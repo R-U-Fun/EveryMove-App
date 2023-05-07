@@ -17,118 +17,93 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
 public class LoginActivity extends AppCompatActivity {
-
-    EditText loginEmail,loginPassword;
+    EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        loginEmail = findViewById(R.id.login_email);
+        loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
         signupRedirectText = findViewById(R.id.signupRedirectText);
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateUsername() | !validatePassword()){
-
-                }
-                else{
+                if (!validateUsername() | !validatePassword()) {
+                } else {
                     checkUser();
-
                 }
             }
         });
-
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent = new Intent(LoginActivity.this,SignupActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
-
     }
-
-    public Boolean validateUsername(){
-        String val = loginEmail.getText().toString();
-        if (val.isEmpty()){
-            loginEmail.setError("Username cannot be empty");
+    public Boolean validateUsername() {
+        String val = loginUsername.getText().toString();
+        if (val.isEmpty()) {
+            loginUsername.setError("Username cannot be empty");
             return false;
-        }
-        else {
-            loginEmail.setError(null);
+        } else {
+            loginUsername.setError(null);
             return true;
         }
     }
-
     public Boolean validatePassword(){
         String val = loginPassword.getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             loginPassword.setError("Password cannot be empty");
             return false;
-        }
-        else {
+        } else {
             loginPassword.setError(null);
             return true;
         }
     }
-
     public void checkUser(){
-        String userEmail = loginEmail.getText().toString().trim();
+        String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
-
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("email").equalTo(userEmail);
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if (snapshot.exists()){
-                    loginEmail.setError(null);
+                    loginUsername.setError(null);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
-                    String passwordFromDB = snapshot.child(userEmail).child("password").getValue(String.class);
+                    if (passwordFromDB.equals(userPassword)) {
+                        loginUsername.setError(null);
+                        String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
 
-                    if (!Objects.equals(passwordFromDB, userPassword)){
-                        loginEmail.setError(null);
-                        Intent intent = new Intent(LoginActivity.this,DashboardActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("email", emailFromDB);
+                        intent.putExtra("username", usernameFromDB);
+                        intent.putExtra("password", passwordFromDB);
                         startActivity(intent);
-                    }
-                    else {
+                    } else {
                         loginPassword.setError("Invalid Credentials");
                         loginPassword.requestFocus();
                     }
+                } else {
+                    loginUsername.setError("User does not exist");
+                    loginUsername.requestFocus();
                 }
-                else {
-                    loginEmail.setError("User does not exist");
-                    loginEmail.requestFocus();
-                }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
-
     }
-
-
 }
-
-
-
-

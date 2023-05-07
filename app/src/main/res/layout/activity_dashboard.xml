@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardActivity"
-    android:background="@drawable/registerbg1">
+    android:background="@drawable/intro">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/foodIntake"
+                        android:id="@+id/dailyDataCard"
                         android:text="Daily Data"
                         android:textColor="@color/Green"
                         android:textSize="20sp"
@@ -121,7 +121,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/NutritionName"
+                        android:id="@+id/dietplan"
                         android:text="Diet Plan"
                         android:textColor="@color/Green"
                         android:textSize="20sp"
@@ -175,7 +175,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/workoutName"
+                        android:id="@+id/workoutplans"
                         android:text="Workout Plans"
                         android:textColor="@color/Green"
                         android:textSize="20sp"
@@ -216,7 +216,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/SocialName"
+                        android:id="@+id/Socialfeatures"
                         android:text="Social Features"
                         android:textColor="@color/Green"
                         android:textSize="20sp"
@@ -268,7 +268,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/profileName"
+                        android:id="@+id/profilemanage"
                         android:text="Manage Profile"
                         android:textColor="@color/Green"
                         android:textSize="20sp"
@@ -309,7 +309,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/StatName"
+                        android:id="@+id/settings"
                         android:text="Settings"
                         android:textColor="@color/Green"
                         android:textSize="20sp"
