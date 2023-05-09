@@ -9,16 +9,16 @@ import android.view.View;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    CardView Dailydata;
+    CardView profilemanage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        Dailydata = findViewById(R.id.mealCard);
+        profilemanage = findViewById(R.id.profileCard);
 
-        Dailydata.setOnClickListener(new View.OnClickListener() {
+        profilemanage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DashboardActivity.this, Manage_Profile_Activity.class);
