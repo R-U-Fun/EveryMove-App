@@ -9,16 +9,16 @@ import android.view.View;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    CardView profilemanage;
+    CardView profileManage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        profilemanage = findViewById(R.id.profileCard);
+        profileManage = findViewById(R.id.profileCard);
 
-        profilemanage.setOnClickListener(new View.OnClickListener() {
+        profileManage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DashboardActivity.this, Manage_Profile_Activity.class);
